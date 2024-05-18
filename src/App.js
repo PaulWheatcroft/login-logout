@@ -1,3 +1,4 @@
+import LoginForm from "./LoginForm";
 import "./App.css";
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
           </ul>
         </nav>
       </header>
-      <main className="main">Hello</main>
+      <main className="main">
+        <LoginForm />
+      </main>
     </>
   );
 }
