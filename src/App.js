@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
 import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Logout from "./components/Logout/Logout";
 import "./App.css";
 
 function App() {
+  const { user } = useContext(UserContext);
   return (
     <Router>
       <>
@@ -17,7 +21,9 @@ function App() {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              <li>Logout</li>
+              <li>
+                <Logout />
+              </li>
             </ul>
           </nav>
         </header>
