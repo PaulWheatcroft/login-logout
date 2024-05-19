@@ -4,28 +4,40 @@
 }
 
 .navbar ul {
-display: flex;
-list-style: none;
-margin: 0;
-padding: 0;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar li {
-margin-right: 16px;
-display: flex;
-align-items: center;
-justify-content: center;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar a {
-text-decoration: none;
-color: #333;
-display: flex;
-align-items: center;
-line-height: 1.5;
-height: 100%; /* Add this line */
-}
-
-.navbar a:hover {
-text-decoration: underline;
-}
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+    height: 100%;
+    position: relative;
+  }
+  
+  .navbar a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar a:hover::after {
+    width: 100%;
+  }
