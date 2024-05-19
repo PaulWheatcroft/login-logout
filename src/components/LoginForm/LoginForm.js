@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./LoginForm.css";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,14 +16,19 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3333/login", {
+      const response = await axios.post("login", {
         username,
         password,
       });
 
+      console.log("***** Response", response);
+
       const { user, token } = response.data;
       console.log(user, token);
 
+      if (response.status === 200) {
+        navigate("/");
+      }
       setUsername("");
       setPassword("");
     } catch (error) {
