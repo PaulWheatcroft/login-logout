@@ -10,7 +10,10 @@ const HomePage = () => {
       {user ? (
         <h1>Welcome to the world of Login Logout {user.name}</h1>
       ) : (
-        <h1>Welcome to the world of Login Logout</h1>
+        <>
+          <h1>Welcome to the world of Login Logout</h1>
+          <p>please login for all the things</p>
+        </>
       )}
     </>
   );

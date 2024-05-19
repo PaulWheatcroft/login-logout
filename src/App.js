@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "./context/UserContext";
 
 import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/LoginForm/LoginForm";
-import Logout from "./components/Logout/Logout";
+import Header from "./components/Header/Header";
 import "./App.css";
 
 function App() {
@@ -12,21 +12,7 @@ function App() {
   return (
     <Router>
       <>
-        <header className="header">
-          <nav>
-            <ul className="navigation">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Logout />
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header user={user} />
         <main className="main">
           <div className="content">
             <Routes>
