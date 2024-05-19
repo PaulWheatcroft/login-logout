@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 
 import "./LoginForm.css";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const { login } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,12 +25,14 @@ const LoginForm = () => {
 
       console.log("***** Response", response);
 
-      const { user, token } = response.data;
-      console.log(user, token);
-
       if (response.status === 200) {
+        const { user, token } = response.data;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        login(user);
+        console.log(user, token);
         navigate("/");
       }
+
       setUsername("");
       setPassword("");
     } catch (error) {
