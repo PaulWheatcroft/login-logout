@@ -13,15 +13,15 @@
   
   .login-form input[type="text"],
   .login-form input[type="password"] {
-    width: 100%;
-    padding: 10px 0 10px 0;
+    width: 90%;
+    padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
   .login-form button {
-    width: 100%;
+    width: 98%;
     padding: 10px 0 10px 0;
     background-color: #4caf50;
     color: #fff;

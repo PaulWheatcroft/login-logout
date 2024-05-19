@@ -11,9 +11,6 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log("****", username);
-  console.log("****", password);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,13 +20,10 @@ const LoginForm = () => {
         password,
       });
 
-      console.log("***** Response", response);
-
       if (response.status === 200) {
         const { user, token } = response.data;
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         login(user);
-        console.log(user, token);
         navigate("/");
       }
 
