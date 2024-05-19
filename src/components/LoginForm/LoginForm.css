@@ -4,6 +4,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 20px 20px 0 #d2c5d2;
   }
   
   .login-form label {
@@ -13,6 +14,7 @@
   
   .login-form input[type="text"],
   .login-form input[type="password"] {
+    font-family: "Libre Baskerville", serif;
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -23,15 +25,16 @@
   .login-form button {
     width: 98%;
     padding: 10px 0 10px 0;
-    background-color: #4caf50;
+    background-color: #73246b;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
   .login-form button:hover {
-    background-color: #45a049;
+    background-color: #d000bb;
   }
   
   .login-form .error {

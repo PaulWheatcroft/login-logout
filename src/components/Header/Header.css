@@ -1,3 +1,11 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #d2c5d2;
+}  
+
 .navbar {
     display: flex;
     align-items: center;
@@ -34,7 +42,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #333;
+    background-color: #d000bb;
     transition: width 0.3s ease;
   }
   
