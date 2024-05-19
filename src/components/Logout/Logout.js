@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
+import "./Logout.css";
+
 const Logout = () => {
   const { logout } = useContext(UserContext);
 
@@ -8,7 +10,11 @@ const Logout = () => {
     logout();
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button onClick={handleLogout} className="logout-button">
+      Logout
+    </button>
+  );
 };
 
 export default Logout;
