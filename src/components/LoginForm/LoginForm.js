@@ -28,6 +28,7 @@ const LoginForm = () => {
 
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token-date-time", Date.now());
 
         navigate("/");
       }

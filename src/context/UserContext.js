@@ -2,14 +2,21 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 export const UserContext = createContext();
 
+const checkTime = (storedTokenDateTime) => {
+  const currentDateTime = new Date();
+  const timeDifference = currentDateTime - storedTokenDateTime;
+  return timeDifference;
+};
+
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
+    const storedTokenAge = checkTime(localStorage.getItem("token-date-time"));
 
-    if (storedToken && storedUser) {
+    if (storedToken && storedUser && storedTokenAge < 600000) {
       const parsedUser = JSON.parse(storedUser);
 
       axios
@@ -37,7 +44,6 @@ export const UserProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    sessionStorage.setItem("user", JSON.stringify(userData));
   };
 
   const logout = () => {
