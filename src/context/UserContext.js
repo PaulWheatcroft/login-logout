@@ -1,14 +1,37 @@
 import React, { createContext, useState, useEffect } from "react";
-
+import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const storedToken = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+
+    if (storedToken && storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+
+      axios
+        .get("http://localhost:3333/verifyToken", {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            setUser(parsedUser);
+          } else {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            setUser(null);
+          }
+        })
+        .catch((error) => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          setUser(null);
+        });
     }
   }, []);
 
@@ -19,7 +42,8 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 
   return (

@@ -25,13 +25,16 @@ const LoginForm = () => {
         const { user, token } = response.data;
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         login(user);
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
         navigate("/");
       }
 
       setUsername("");
       setPassword("");
     } catch (error) {
-      console.log("Invalid username or password");
       setErrorMessage("Invalid username or password");
     }
   };
