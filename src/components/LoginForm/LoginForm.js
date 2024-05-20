@@ -10,6 +10,7 @@ const LoginForm = () => {
   const { login } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,12 +32,14 @@ const LoginForm = () => {
       setPassword("");
     } catch (error) {
       console.log("Invalid username or password");
+      setErrorMessage("Invalid username or password");
     }
   };
 
   return (
     <>
       <h1>Please login</h1>
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="login-form">
         <div>
           <label>Username:</label>
